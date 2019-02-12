@@ -11,7 +11,11 @@ export class FormsComponent implements OnInit {
   newProduct:any;
  
   constructor() { 
-    this.newProduct = {};
+    this.newProduct = {
+      name: 'Awessome',
+      description: 'Product Awesome Description',
+      price: 10.12
+    };
   }
 
   ngOnInit() {

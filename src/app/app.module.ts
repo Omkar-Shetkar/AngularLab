@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
 import { PriceValidator } from './validators/price-validator';
+import { ContainsWordValidator } from './validators/contains-word-validator';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
-    PriceValidator
+    PriceValidator,
+    ContainsWordValidator
   ],
   imports: [
     BrowserModule,
