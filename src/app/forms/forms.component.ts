@@ -9,18 +9,18 @@ import { NgForm } from '@angular/forms';
 export class FormsComponent implements OnInit {
 
   newProduct:any;
- 
-  constructor() { 
+
+  constructor() {
     this.newProduct = {
-      name: 'Awessome',
+      name: 'Awesome',
       description: 'Product Awesome Description',
       price: 10.12
     };
   }
 
   ngOnInit() {
-    
+
   }
 
-  
+
 }

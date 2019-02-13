@@ -1,4 +1,4 @@
-import { Directive, forwardRef } from "@angular/core";
+import { Directive, forwardRef, Input } from "@angular/core";
 import { NG_VALIDATORS } from "@angular/forms";
 
 @Directive({
@@ -12,9 +12,12 @@ import { NG_VALIDATORS } from "@angular/forms";
     ]
 })
 export class ContainsWordValidator {
+
+  @Input() containsword;
+
     validate(control) {
        const description = control.value;
-       const name = control.root.controls.name.value;
+       const name = control.root.controls[this.containsword].value;
 
        if(description && name) {
         if(description.split(' ')
@@ -28,7 +31,7 @@ export class ContainsWordValidator {
                             }
                         }
        }
-       
+
     return null;
     }
 }

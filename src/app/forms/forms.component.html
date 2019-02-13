@@ -1,7 +1,7 @@
 <form>
   <p>
     <label>Product Name: </label>
-    <input type="text" name="name" [(ngModel)]="newProduct.name" #productName="ngModel" 
+    <input type="text" name="name" [(ngModel)]="newProduct.name" #productName="ngModel"
     required pattern="[A-Z][a-z ]" minlength="4">
     <span *ngIf="productName.dirty">
       <span *ngIf="productName.hasError('required')">Product Name is required</span>
@@ -11,8 +11,8 @@
 
   <p>
     <label>Product Description: </label>
-    <input type="text" name="description" [(ngModel)]="newProduct.description" #productDescription="ngModel" 
-    required pattern="[A-Z][a-z ]" minlength="6" containsword/>
+    <input type="text" name="description" [(ngModel)]="newProduct.description" #productDescription="ngModel"
+    required pattern="[A-Z][a-z ]" minlength="6" containsword="name"/>
     <span *ngIf="productDescription.dirty">
       <span *ngIf="productDescription.hasError('required')">Product Description is required</span>
       <span *ngIf="productDescription.hasError('containsword')">{{productDescription.getError('containsword').error}}</span>
@@ -22,7 +22,7 @@
 
   <p>
     <label>Product Price: </label>
-    <input type="text" name="price" [(ngModel)]="newProduct.price" #productPrice="ngModel" 
+    <input type="text" name="price" [(ngModel)]="newProduct.price" #productPrice="ngModel"
     required pattern="(\d)+\.(\d)(\d)" validateprice/>
     <span *ngIf="productPrice.dirty">
       <span *ngIf="productPrice.hasError('required')">Product Price is required</span>
