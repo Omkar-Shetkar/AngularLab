@@ -32,6 +32,6 @@ export class ContainsWordValidator {
                         }
        }
 
-    return null;
+       return null;
     }
 }

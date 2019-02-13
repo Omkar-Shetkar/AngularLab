@@ -1,8 +1,8 @@
-<form>
+<form #form="ngForm" (ngSubmit)="createProduct()">
   <p>
     <label>Product Name: </label>
     <input type="text" name="name" [(ngModel)]="newProduct.name" #productName="ngModel"
-    required pattern="[A-Z][a-z ]" minlength="4">
+    required minlength="4">
     <span *ngIf="productName.dirty">
       <span *ngIf="productName.hasError('required')">Product Name is required</span>
       <span *ngIf="productName.hasError('minlength')">Product Name should be atleast 4 chars</span>
@@ -12,7 +12,7 @@
   <p>
     <label>Product Description: </label>
     <input type="text" name="description" [(ngModel)]="newProduct.description" #productDescription="ngModel"
-    required pattern="[A-Z][a-z ]" minlength="6" containsword="name"/>
+    required minlength="6" containsword="name"/>
     <span *ngIf="productDescription.dirty">
       <span *ngIf="productDescription.hasError('required')">Product Description is required</span>
       <span *ngIf="productDescription.hasError('containsword')">{{productDescription.getError('containsword').error}}</span>
