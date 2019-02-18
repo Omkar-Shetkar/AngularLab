@@ -36,3 +36,16 @@
     <input type="submit" value="Create"/>
   </p>
 </form>
+<hr>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+  </tr>
+</table>

@@ -1,27 +1,49 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ProductService } from './../services/products.service';
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.css']
+  styleUrls: ['./forms.component.css'],
+  providers: [ ProductService ]
 })
 export class FormsComponent implements OnInit {
 
   newProduct:any;
 
-  @ViewChild('form') form;
 
-  constructor() {
+  @ViewChild('form') form;
+  service: ProductService;
+  products: any[];
+  message: string;
+
+  constructor(@Inject(ProductService) service) {
+    this.service = service;
+    this.products = [];
+    this.message = '';
     this.newProduct = {
-      name: 'Awesome',
-      description: 'Product Awesome Description',
-      price: 10.12
+      name: '',
+      description: '',
+      price: ''
     };
   }
 
   ngOnInit() {
+    this.service.getProducts()
+      .subscribe(data => this.updateData(data.body),
+                error => this.updateError(error)
+      );
+  }
 
+  updateData(data) {
+    this.products = data;
+    console.log(this.products);
+  }
+
+  updateError(error) {
+    console.log(error);
+    this.message = error;
   }
 
   createProduct() {
