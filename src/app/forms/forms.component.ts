@@ -30,10 +30,7 @@ export class FormsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getProducts()
-      .subscribe(data => this.updateData(data.body),
-                error => this.updateError(error)
-      );
+    this.fetchPrices();
   }
 
   updateData(data) {
@@ -55,8 +52,22 @@ export class FormsComponent implements OnInit {
     console.log(this.form.valid);
 
     if(this.form.valid) {
-      alert('Sending to server not yet implemented!');
+      this.service.addProduct(this.newProduct).subscribe(
+        data => this.refreshData(),
+        error => this.updateError(error)
+      );
     }
+  }
+
+  refreshData() {
+    this.fetchPrices();
+  }
+
+  fetchPrices() {
+    this.service.getProducts()
+      .subscribe(data => this.updateData(data.body),
+                error => this.updateError(error)
+      );
   }
 
 

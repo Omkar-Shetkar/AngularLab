@@ -37,12 +37,14 @@
   </p>
 </form>
 <hr>
+Total products: {{products.length}}
 <table>
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th>Price</th>
   </tr>
+
   <tr *ngFor="let product of products">
     <td>{{product.name}}</td>
     <td>{{product.description}}</td>
