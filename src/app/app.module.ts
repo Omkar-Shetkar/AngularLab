@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
+import { SampleComponent } from './forms/sample.component';
 import { PriceValidator } from './validators/price-validator';
 import { ContainsWordValidator } from './validators/contains-word-validator';
 
@@ -14,7 +15,8 @@ import { ContainsWordValidator } from './validators/contains-word-validator';
     AppComponent,
     FormsComponent,
     PriceValidator,
-    ContainsWordValidator
+    ContainsWordValidator,
+    SampleComponent
   ],
   imports: [
     BrowserModule,

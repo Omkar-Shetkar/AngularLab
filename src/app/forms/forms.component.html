@@ -1,3 +1,10 @@
+<input type="checkbox" [(ngModel)]="show"/>
+<div *ngIf="show">
+  <sample [foo]="value"></sample>
+</div>
+
+Create a new product:
+
 <form #form="ngForm" (ngSubmit)="createProduct()">
   <p>
     <label>Product Name: </label>

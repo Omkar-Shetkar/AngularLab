@@ -11,12 +11,14 @@ import { ProductService } from './../services/products.service';
 export class FormsComponent implements OnInit {
 
   newProduct:any;
+  show: boolean;
 
 
   @ViewChild('form') form;
   service: ProductService;
   products: any[];
   message: string;
+  value: string;
 
   constructor(@Inject(ProductService) service) {
     this.service = service;
@@ -27,6 +29,15 @@ export class FormsComponent implements OnInit {
       description: '',
       price: ''
     };
+    this.show = true;
+    this.value = 'Made in India';
+    this.changeValue();
+
+  }
+
+  changeValue() {
+    this.value += '.';
+    setTimeout(() => this.changeValue(), 5000);
   }
 
   ngOnInit() {
@@ -35,7 +46,6 @@ export class FormsComponent implements OnInit {
 
   updateData(data) {
     this.products = data;
-    console.log(this.products);
   }
 
   updateError(error) {
@@ -47,9 +57,7 @@ export class FormsComponent implements OnInit {
     for(const control in this.form.controls) {
       this.form.controls[control].markAsDirty();
       this.form.controls[control].updateValueAndValidity();
-      console.log(this.form.controls[control].value + ' valid: '+this.form.controls[control].valid);
     }
-    console.log(this.form.valid);
 
     if(this.form.valid) {
       this.service.addProduct(this.newProduct).subscribe(
